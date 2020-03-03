@@ -21,6 +21,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home/news','NewsController@index');
+Route::get('/admin/news/index','NewsController@index');
+
+
+Route::get('/home/news/create','NewsController@create');
 
 Route::post('/home/news/store','NewsController@store');
+Route::get('/admin/news/edit/{id}', 'NewsController@edit');
+
+Route::post('/home/news/update/{id}','NewsController@update');
+Route::post('/home/news/delete','NewsController@delete');
+
