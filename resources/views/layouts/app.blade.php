@@ -9,7 +9,8 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -17,9 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    @yield('css')
-
 </head>
 <body>
     <div id="app">
@@ -41,7 +39,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/admin/news/index">123
+                                <a class="dropdown-item" href="/home/news">123
                                 </a>
 
                                 <form id="logout-form" action="" method="POST" style="display: none;">
@@ -92,9 +90,5 @@
             @yield('content')
         </main>
     </div>
-
-      <!-- Scripts -->
-      <script src="{{ asset('js/app.js') }}"></script>
-      @yield('js')
 </body>
 </html>

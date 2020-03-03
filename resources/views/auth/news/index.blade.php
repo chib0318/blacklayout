@@ -4,7 +4,6 @@
 
 
     <div class="container">
-
         <form method="POST" action="/home/news/store">
                 @csrf
             <div class="form-group">
