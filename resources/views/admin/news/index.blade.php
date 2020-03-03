@@ -7,25 +7,7 @@
 
 @endsection
 
-@section('js')
 
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-
-
-</script>
-
-
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
-
-
-</script>
-<script>
-    $(document).ready(function() {
-    $('#example').DataTable();
-} );
-
-</script>
-@endsection
 
 
 
@@ -59,7 +41,10 @@
                     <td>{{$item->queue}}</td>
                     <td>{{$item->payload}}</td>
                     <td><a href="/admin/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
-                    <button class="btn btn-danger">刪除</button>
+                    <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
+                    <form id="delete-form-{{$item->id}}" action="/home/news/delete/{{$item->id}}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                     </td>
                 </tr>
                 @endforeach
@@ -71,3 +56,31 @@
 @endsection
 
 
+@section('js')
+
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+
+
+</script>
+
+
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+
+
+</script>
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+function show_confirm(id)
+  {
+    console.log(id)
+    var r=confirm("你確定要刪除")
+    if (r==true)
+        {
+            document.getElementById(`delete-form-${id}`).submit();
+        }
+
+    }
+</script>
+@endsection

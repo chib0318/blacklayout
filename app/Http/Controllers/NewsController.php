@@ -31,4 +31,8 @@ class NewsController extends Controller
         News::find($id)->update($request->all());
          return redirect('/admin/news/index');
      }
+     public function delete(Request $request,$id){
+        News::find($id)->delete();
+        return redirect('/admin/news/index');
+     }
 }
