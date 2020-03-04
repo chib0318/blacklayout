@@ -8,8 +8,13 @@
         <form method="POST" action="/home/news/update/{{$news->id}}">
                 @csrf
             <div class="form-group">
-                <label for="connection">img</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="connection" name="connection" value="{{$news->connection}}">
+                <label for="connection">現有圖片</label>
+                <hr>
+            <img class="img-fluid" width="250" src="/storage/{{$news->connection}}">
+            </div>
+            <div class="form-group">
+                <label for="connection">重新上傳圖片</label>
+                <input type="file" class="form-control" id="connection"  name="connection" value="{{$news->connection}}" >
             </div>
             <div class="form-group">
                 <label for="queue">title</label>
