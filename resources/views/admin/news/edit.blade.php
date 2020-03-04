@@ -19,7 +19,10 @@
                 <label for="payload">main</label>
                 <input type="text" class="form-control" id="payload" name="payload" value="{{$news->payload}}">
             </div>
-
+            <div class="form-group">
+                <label for="sort">sort</label>
+                <input type="text" class="form-control" id="sort" name="sort">
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

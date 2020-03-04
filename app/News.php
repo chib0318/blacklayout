@@ -8,7 +8,7 @@ class News extends Model
 {
     protected $table = 'news';
     protected $fillable = [
-        'connection', 'queue', 'payload'
+        'connection', 'queue', 'payload','sort'
     ];
 }
 

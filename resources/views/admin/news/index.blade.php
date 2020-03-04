@@ -21,36 +21,39 @@
 
 
 
-    <div class="container">
-<a href="/home/news/create" class="btn btn-success">新增最新消息</a>
-<hr>
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
-            <thead>
-                <tr>
-                    <th>img</th>
-                    <th>title</th>
-                    <th>content</th>
-                    <th width="100px"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($all_news as $item)
+<div class="container">
+    <a href="/home/news/create" class="btn btn-success">新增最新消息</a>
+    <hr>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>img</th>
+                <th>title</th>
+                <th>content</th>
+                <th>sort</th>
+                <th width="100px"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($all_news as $item)
 
-                <tr>
-                <td><img src="{{$item->connection}}" alt=""></td>
-                    <td>{{$item->queue}}</td>
-                    <td>{{$item->payload}}</td>
-                    <td><a href="/admin/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
+            <tr>
+                <td><img src="{{asset('/storage/'.$item->connection)}}" alt="" width="120"></td>
+                <td>{{$item->queue}}</td>
+                <td>{{$item->payload}}</td>
+                <td>{{$item->sort}}</td>
+                <td><a href="/admin/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
                     <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
-                    <form id="delete-form-{{$item->id}}" action="/home/news/delete/{{$item->id}}" method="POST" style="display: none;">
+                    <form id="delete-form-{{$item->id}}" action="/home/news/delete/{{$item->id}}" method="POST"
+                        style="display: none;">
                         @csrf
                     </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
 
 @endsection
@@ -70,8 +73,12 @@
 </script>
 <script>
     $(document).ready(function() {
-    $('#example').DataTable();
+        $('#example').DataTable( {
+    "order": [[ 3, 'desc' ]]
 } );
+} );
+
+
 function show_confirm(id)
   {
     console.log(id)

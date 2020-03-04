@@ -5,11 +5,11 @@
 
     <div class="container">
 
-        <form method="POST" action="/home/news/store">
+        <form method="POST" action="/home/news/store" enctype="multipart/form-data">
                 @csrf
             <div class="form-group">
                 <label for="connection">img</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="connection" name="connection" >
+                <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="connection" name="connection" >
             </div>
             <div class="form-group">
                 <label for="queue">title</label>

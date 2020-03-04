@@ -33,14 +33,14 @@ Route::post('/home/news/update/{id}','NewsController@update');
 Route::post('/home/news/delete/{id}','NewsController@delete');
 
 
-Route::get('','ProductController@index');
+// Route::get('','ProductController@index');
 
 
-Route::get('','ProductController@create');
+// Route::get('','ProductController@create');
 
-Route::post('','ProductController@store');
-Route::get('', 'ProductController@edit');
+// Route::post('','ProductController@store');
+// Route::get('', 'ProductController@edit');
 
-Route::post('','ProductsController@update');
-Route::post('','ProductController@delete');
+// Route::post('','ProductsController@update');
+// Route::post('','ProductController@delete');
 

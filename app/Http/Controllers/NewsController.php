@@ -18,6 +18,12 @@ class NewsController extends Controller
 
     public function store(Request $request){
        $news_data = $request->all();
+
+       //上傳檔案
+
+       $file_name = $request->file('connection')->store('','public');
+       $news_data['connection'] = $file_name;
+
        News::create($news_data)->save();
         return redirect('/admin/news/index');
     }
