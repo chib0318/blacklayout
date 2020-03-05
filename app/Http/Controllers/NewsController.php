@@ -23,9 +23,16 @@ class NewsController extends Controller
 
        //上傳檔案
 
-       $file_name = $request->file('connection')->store('','public');
-       $news_data['connection'] = $file_name;
+    //    $file_name = $request->file('connection')->store('','public');
+    //    $news_data['connection'] = $file_name;
 
+
+    if($request->hasFile('connection')) {
+        $file = $request->file('connection');
+        $path = $this->fileUpload($file,'product');
+
+        $news_data['connection'] = $path;
+    }
        News::create($news_data)->save();
         return redirect('/admin/news/index');
     }
@@ -38,18 +45,24 @@ class NewsController extends Controller
         $news_data = $request->all();
         $item = News::find($id);
 
-
-        if($request->hasFile('connection')){
-            //刪除
-            $old_img = $item->connection;
-            Storage::disk('public')->delete($old_img);
-            //重新上傳
+        if($request->hasFile('connection')) {
+            $old_image = $item->img;
+            $file = $request->file('connection');
+            $path = $this->fileUpload($file,'product');
+            $news_data['connection'] = $path;
+            File::delete(public_path().$old_image);
+        }
+        // if($request->hasFile('connection')){
+        //     //刪除
+        //     $old_img = $item->connection;
+        //     Storage::disk('public')->delete($old_img);
+        //     //重新上傳
             // $file_name = $request->file('connection')->store('','public');
             // $news_data['connection'] = $file_name;
 
-            News::create($news_data)->save();
-        }
-        $item -> update($news_data);
+            // News::create($news_data)->save();
+
+            $item->update($news_data);
         return redirect('/admin/news/index');
         // News::find($id)->update($request->all());
         //  return redirect('/admin/news/index');
@@ -61,4 +74,22 @@ class NewsController extends Controller
         News::find($id)->delete();
         return redirect('/admin/news/index');
      }
+     private function fileUpload($file,$dir){
+        //防呆：資料夾不存在時將會自動建立資料夾，避免錯誤
+        if( ! is_dir('upload/')){
+            mkdir('upload/');
+        }
+        //防呆：資料夾不存在時將會自動建立資料夾，避免錯誤
+        if ( ! is_dir('upload/'.$dir)) {
+            mkdir('upload/'.$dir);
+        }
+        //取得檔案的副檔名
+        $extension = $file->getClientOriginalExtension();
+        //檔案名稱會被重新命名
+        $filename = strval(time().md5(rand(100, 200))).'.'.$extension;
+        //移動到指定路徑
+        move_uploaded_file($file, public_path().'/upload/'.$dir.'/'.$filename);
+        //回傳 資料庫儲存用的路徑格式
+        return '/upload/'.$dir.'/'.$filename;
+    }
 }

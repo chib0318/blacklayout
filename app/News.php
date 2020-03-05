@@ -10,6 +10,10 @@ class News extends Model
     protected $fillable = [
         'connection', 'queue', 'payload','sort'
     ];
+    public function news_imgs()
+    {
+        return $this->hasMany('App\NewsImgs');
+    }
 }
 
 

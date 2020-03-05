@@ -38,7 +38,7 @@
             @foreach ($all_news as $item)
 
             <tr>
-                <td><img src="{{asset('/storage/'.$item->connection)}}" alt="" width="120"></td>
+                <td><img src="{{asset($item->connection)}}" alt="" width="120"></td>
                 <td>{{$item->queue}}</td>
                 <td>{{$item->payload}}</td>
                 <td>{{$item->sort}}</td>

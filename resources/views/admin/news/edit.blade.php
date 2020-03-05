@@ -5,12 +5,12 @@
 
     <div class="container">
 
-        <form method="POST" action="/home/news/update/{{$news->id}}">
+        <form method="POST" action="/home/news/update/{{$news->id}}" enctype="multipart/form-data">
                 @csrf
             <div class="form-group">
                 <label for="connection">現有圖片</label>
                 <hr>
-            <img class="img-fluid" width="250" src="/storage/{{$news->connection}}">
+            <img class="img-fluid" width="250" src="{{$news->connection}}">
             </div>
             <div class="form-group">
                 <label for="connection">重新上傳圖片</label>
