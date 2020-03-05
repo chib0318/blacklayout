@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="sort">sort</label>
-                <input type="number" class="form-control" id="sort" name="sort">
+                <input type="number" min="0" class="form-control" id="sort" name="sort" value="{{$news->sort}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

@@ -44,13 +44,16 @@ class NewsController extends Controller
     public function update(Request $request,$id){
         $news_data = $request->all();
         $item = News::find($id);
-
+        //if有上傳新圖片
         if($request->hasFile('connection')) {
-            $old_image = $item->img;
+            //舊圖片刪除
+            $old_image = $item->connection;
+            File::delete(public_path().$old_image);
+            //上傳新圖片
             $file = $request->file('connection');
             $path = $this->fileUpload($file,'product');
             $news_data['connection'] = $path;
-            File::delete(public_path().$old_image);
+
         }
         // if($request->hasFile('connection')){
         //     //刪除
@@ -69,9 +72,12 @@ class NewsController extends Controller
      }
      public function delete($id){
         $item = News::find($id);
-        $old_img = $item->connection;
-        Storage::disk('public')->delete($old_img);
-        News::find($id)->delete();
+        $old_image = $item->connection;
+        if(file_exists(public_path().$old_image)){
+            File::delete(public_path().$old_image);
+        }
+
+        $item->delete();
         return redirect('/admin/news/index');
      }
      private function fileUpload($file,$dir){
