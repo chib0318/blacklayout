@@ -1,4 +1,11 @@
 @extends('layouts/app')
+
+@section('css')
+
+
+
+@endsection
+
 @section('content')
 
 
@@ -12,9 +19,26 @@
                 <hr>
             <img class="img-fluid" width="250" src="{{$news->connection}}">
             </div>
+            <input type="file" class="form-control" id="connection"  name="connection" value="{{$news->connection}}" >
             <div class="form-group">
                 <label for="connection">重新上傳圖片</label>
-                <input type="file" class="form-control" id="connection"  name="connection" value="{{$news->connection}}" >
+                <hr>
+                <label for="connection">現有多張圖片</label>
+                <div class="row">
+                    @foreach ($news->news_imgs as $item)
+                    <div class="col-2">
+                        <div class="news_img_card">
+                            <button class="btn btn-danger">X</button>
+                            <img class="img-fluid" src="{{$item->img}}" alt="">
+                            <input class="from-control" type="text" value="{{$item->sort}}">
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <hr>
+                <input type="file" class="form-control" id="imgs"  name="imgs[]"  multiple>
+                <label for="connection">重新上傳圖片</label>
+
             </div>
             <div class="form-group">
                 <label for="queue">title</label>

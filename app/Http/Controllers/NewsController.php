@@ -60,6 +60,7 @@ class NewsController extends Controller
     public function update(Request $request,$id){
         $news_data = $request->all();
         $item = News::find($id);
+
         //if有上傳新圖片
         if($request->hasFile('connection')) {
             //舊圖片刪除
@@ -71,6 +72,23 @@ class NewsController extends Controller
             $news_data['connection'] = $path;
 
         }
+
+        //多張圖片
+           if($request->hasFile('imgs')){
+               $files = $request->file('imgs');
+               foreach ($files as $file) {
+
+                   //上傳圖片
+                   $path = $this->fileUpload($file,'product');
+
+                   //建立News多張圖片的資料
+                   $news_imgs = new News_img;
+                   $news_imgs->news_id = $item['id'];
+                   $news_imgs->img = $path;
+                   $news_imgs->save();
+               }
+           }
+
         // if($request->hasFile('connection')){
         //     //刪除
         //     $old_img = $item->connection;
@@ -87,15 +105,35 @@ class NewsController extends Controller
         //  return redirect('/admin/news/index');
      }
      public function delete($id){
+
         $item = News::find($id);
-        $old_image = $item->connection;
+
+        // dd($item);
+        $old_image = $item['connection'];
+        // dd($old_image);
         if(file_exists(public_path().$old_image)){
             File::delete(public_path().$old_image);
         }
 
         $item->delete();
+
+
+        $news = News_img::where('news_id',$id)->get();
+//    dd($news);
+
+        foreach($news as $new){
+            $old=$new['img'];
+            if(file_exists(public_path().$old)){
+                File::delete(public_path().$old);
+            }
+            $new->delete();
+        }
+
+
         return redirect('/admin/news/index');
+
      }
+
      private function fileUpload($file,$dir){
         //防呆：資料夾不存在時將會自動建立資料夾，避免錯誤
         if( ! is_dir('upload/')){
