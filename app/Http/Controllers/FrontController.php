@@ -18,9 +18,16 @@ class FrontController extends Controller
         return view('front/news',compact('news_data'));
     }
     //
-    public function news_datail($id){
-        $news_imgs=News::find($id)->aaa;
-        return view('front/news_detail',compact('news_imgs'));
+    public function news_detail($id){
+        //方法1
+        // $news_imgs =News::find($id)->news_imgs;
+        //方法2
+        // $news_imgs =News::find($id);
+        // $imgs = News::where('news-id',$id)->get();
+        //方法3
+        $news =News::with('news_imgs')->find($id);
+        return view('front.news_detail',compact('news'));
+
     }
 
     public function product(){

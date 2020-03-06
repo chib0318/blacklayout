@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\News;
+use App\News_img;
+use App\NewsImgs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -19,13 +21,12 @@ class NewsController extends Controller
 
 
     public function store(Request $request){
-       $news_data = $request->all();
-
        //上傳檔案
 
     //    $file_name = $request->file('connection')->store('','public');
     //    $news_data['connection'] = $file_name;
 
+    $news_data = $request->all();
 
     if($request->hasFile('connection')) {
         $file = $request->file('connection');
@@ -33,7 +34,22 @@ class NewsController extends Controller
 
         $news_data['connection'] = $path;
     }
-       News::create($news_data)->save();
+       $new_news =News::create($news_data);
+     //多張圖片
+        if($request->hasFile('imgs')){
+            $files = $request->file('imgs');
+            foreach ($files as $file) {
+
+                //上傳圖片
+                $path = $this->fileUpload($file,'product');
+
+                //建立News多張圖片的資料
+                $news_imgs = new News_img;
+                $news_imgs->news_id = $new_news->id;
+                $news_imgs->img = $path;
+                $news_imgs->save();
+            }
+        }
         return redirect('/admin/news/index');
     }
 

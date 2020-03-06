@@ -13,7 +13,8 @@
 
 Route::get('/','FrontController@index' );
 
-Route::get('/news','FrontController@news' );
+Route::get('/news','FrontController@news' );//list page
+Route::get('/news/{id}','FrontController@news_detail' );//content page
 Route::get('/product','FrontController@product' );
 
 

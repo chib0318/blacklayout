@@ -31,7 +31,7 @@ class News_img extends Model
     /**
      * @var array
      */
-    
-    protected $fillable = ['news-id', 'img-url', 'sort', 'created_at', 'updated_at'];
+
+    protected $fillable = ['news_id','img', 'sort', 'created_at', 'updated_at'];
 
 }

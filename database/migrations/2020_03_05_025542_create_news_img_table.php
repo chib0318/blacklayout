@@ -15,8 +15,8 @@ class CreateNewsImgTable extends Migration
     {
         Schema::create('news_img', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('news-id');
-            $table->text('img-url');
+            $table->text('news_id');
+            $table->text('img');
             $table->integer('sort')->default(0);
             $table->timestamps();
         });

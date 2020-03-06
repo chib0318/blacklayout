@@ -9,33 +9,16 @@
 
     <div class="container">
         <div class="media-container-row">
-            @foreach ($news_data as $item)
+           title:{{$news->id}}
+           <br>
+           多張圖片:
+           <br>
+        @foreach ($news->news_imgs as $news_img)
 
-            <div class="card p-3 col-12 col-md-6 col-lg-4">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                    <img src="{{$item->connection}}" alt="Mobirise">
-                    </div>
-                    <div class="card-box">
-                        <h4 class="card-title mbr-fonts-style display-7">
-                            {{$item->queue}}
-                        </h4>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                            {{$item->payload}}
-                        </p>
-                    </div>
-                    <div class="mbr-section-btn text-center">
-                        <a href="https://mobirise.co" class="btn btn-primary display-4">
-                            Learn More
-                        </a>
-                    </div>
-                </div>
-            </div>
+        {{$news_img}}
 
-            @endforeach
-
-
-
+         @endforeach
+`
 
         </div>
     </div>
