@@ -152,4 +152,9 @@ class NewsController extends Controller
         //回傳 資料庫儲存用的路徑格式
         return '/upload/'.$dir.'/'.$filename;
     }
+    public function ajax_delete_news_imgs(Request $request)
+    {
+        $newsmigid = $request->newsmigid;
+        return $newsmigid;
+    }
 }

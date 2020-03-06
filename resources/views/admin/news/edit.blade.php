@@ -28,7 +28,7 @@
                     @foreach ($news->news_imgs as $item)
                     <div class="col-2">
                         <div class="news_img_card">
-                            <button class="btn btn-danger">X</button>
+                            <button type="button" class="btn btn-danger" data-newsimgid="{{$item->id}}">X</button>
                             <img class="img-fluid" src="{{$item->img}}" alt="">
                             <input class="from-control" type="text" value="{{$item->sort}}">
                         </div>
@@ -57,4 +57,26 @@
     </div>
 @endsection
 
+@section('js')
+    <script>
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.news_img_card .btn-danger').click(function(){
+        //id
+     var  newsimgid = this.getAttribute('data-newsimgid');
+        jQuery.ajax({
+                  url: "/home/ajax_delete_news_imgs",
+                  method: 'post',
+                  data: {
+                    newsimgid: newsimgid,
+                  },
+                  success: function(result){
+                     console.log(result);
+                  });
+    });
+    </script>
+@endsection
 
