@@ -154,7 +154,17 @@ class NewsController extends Controller
     }
     public function ajax_delete_news_imgs(Request $request)
     {
-        $newsmigid = $request->newsmigid;
-        return $newsmigid;
+        $newsimgid = $request->newsimgid;
+        $item = News_img::find($newsimgid);
+        $old_image = $item->img;
+        // dd($old_image);
+        if(file_exists(public_path().$old_image)){
+            File::delete(public_path().$old_image);
+        }
+
+        $item->delete();
+
+
+        return  "xxxx";
     }
-}
+ }

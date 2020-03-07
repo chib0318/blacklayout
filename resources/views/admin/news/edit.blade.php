@@ -26,7 +26,7 @@
                 <label for="connection">現有多張圖片</label>
                 <div class="row">
                     @foreach ($news->news_imgs as $item)
-                    <div class="col-2">
+                    <div class="col-2" data-newsimgid="{{$item->id}}">
                         <div class="news_img_card">
                             <button type="button" class="btn btn-danger" data-newsimgid="{{$item->id}}">X</button>
                             <img class="img-fluid" src="{{$item->img}}" alt="">
@@ -60,23 +60,27 @@
 @section('js')
     <script>
         $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     $('.news_img_card .btn-danger').click(function(){
-        //id
-     var  newsimgid = this.getAttribute('data-newsimgid');
-        jQuery.ajax({
+
+         var newsimgid =  this.getAttribute('data-newsimgid');
+
+        $.ajax({
                   url: "/home/ajax_delete_news_imgs",
                   method: 'post',
                   data: {
                     newsimgid: newsimgid,
                   },
                   success: function(result){
-                     console.log(result);
-                  });
+                    $(`.col-2[data-newsimgid=${newsimgid}]`).remove();
+
+                  }
+            });
     });
+
     </script>
 @endsection
 
