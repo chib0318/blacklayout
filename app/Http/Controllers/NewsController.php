@@ -109,7 +109,7 @@ class NewsController extends Controller
         $item = News::find($id);
 
         // dd($item);
-        $old_image = $item['connection'];
+        $old_image = $item->connection;
         // dd($old_image);
         if(file_exists(public_path().$old_image)){
             File::delete(public_path().$old_image);
@@ -117,7 +117,7 @@ class NewsController extends Controller
 
         $item->delete();
 
-
+        //多張
         $news = News_img::where('news_id',$id)->get();
 //    dd($news);
 

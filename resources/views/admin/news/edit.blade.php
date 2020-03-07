@@ -40,7 +40,7 @@
                         <div class="news_img_card">
                             <button type="button" class="btn btn-danger" data-newsimgid="{{$item->id}}">X</button>
                             <img class="img-fluid" src="{{$item->img}}" alt="">
-                            <input class="from-control  aa" type="text" value="{{$item->sort}}">
+                            <input class="from-control  aa" type="text" value="{{$item->sort}}" onchange="ajx_post_sorrt(this,{{$item->id}})">
                         </div>
                     </div>
                     @endforeach
@@ -90,6 +90,9 @@
                   }
             });
     });
+    function ajx_post_sorrt(iam,id){
+        console.log(iam.value);
+    }
 
     </script>
 @endsection
