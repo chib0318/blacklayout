@@ -1,7 +1,17 @@
 @extends('layouts/app')
 
 @section('css')
-
+<style>
+    .news_img_card .btn-danger{
+        position: absolute;
+        right: -5px;
+        top: -15px;
+        border-radius: 50%;
+    }
+    .aa{
+        width: 100%;
+    }
+</style>
 
 
 @endsection
@@ -30,7 +40,7 @@
                         <div class="news_img_card">
                             <button type="button" class="btn btn-danger" data-newsimgid="{{$item->id}}">X</button>
                             <img class="img-fluid" src="{{$item->img}}" alt="">
-                            <input class="from-control" type="text" value="{{$item->sort}}">
+                            <input class="from-control  aa" type="text" value="{{$item->sort}}">
                         </div>
                     </div>
                     @endforeach
