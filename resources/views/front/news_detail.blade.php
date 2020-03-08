@@ -17,7 +17,7 @@
 
         <img width="150" src="{{$news_img->img}}" alt="">
          @endforeach
-`
+
 
         </div>
     </div>
