@@ -15,8 +15,7 @@
            <br>
         @foreach ($news->news_imgs as $news_img)
 
-        {{$news_img}}
-
+        <img width="150" src="{{$news_img->img}}" alt="">
          @endforeach
 `
 

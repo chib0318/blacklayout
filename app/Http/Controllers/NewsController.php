@@ -167,4 +167,14 @@ class NewsController extends Controller
 
         return  "xxxx";
     }
+    public function ajx_post_sorrt(Request $request)
+    {
+        $news_id= $request->id;
+        $sort= $request->sort_value;
+        $img = News_img::find($news_id);
+        $img->sort = $sort;
+
+        $img->save();
+        return"777";
+    }
  }

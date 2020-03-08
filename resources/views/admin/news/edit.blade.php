@@ -91,7 +91,20 @@
             });
     });
     function ajx_post_sorrt(iam,id){
-        console.log(iam.value);
+        // console.log(iam.value);
+        var id;
+        var sort_value = iam.value;
+        $.ajax({
+                  url: "/home/ajx_post_sorrt",
+                  method: 'post',
+                  data: {
+                    id: id,
+                    sort_value:sort_value,
+                  },
+                  success: function(result){
+                   console.log(result);
+                  }
+            });
     }
 
     </script>

@@ -34,6 +34,7 @@ Route::post('/home/news/update/{id}','NewsController@update');
 Route::post('/home/news/delete/{id}','NewsController@delete');
 
 Route::post('/home/ajax_delete_news_imgs','NewsController@ajax_delete_news_imgs');
+Route::post('/home/ajx_post_sorrt','NewsController@ajx_post_sorrt');
 
 
 // Route::get('','ProductController@index');
