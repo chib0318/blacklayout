@@ -39,9 +39,9 @@
             <tr>
                 <td>{{$item->types}}</td>
                 <td>{{$item->sort}}</td>
-                <td><a href="/admin/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
+                <td><a href="/admin/project/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
                     <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
-                    <form id="delete-form-{{$item->id}}" action="/home/news/delete/{{$item->id}}" method="POST"
+                    <form id="delete-form-{{$item->id}}" action="/home/project/delete/{{$item->id}}" method="POST"
                         style="display: none;">
                         @csrf
                     </form>

@@ -22,7 +22,7 @@
 
     <div class="container">
 
-        <form method="POST" action="/home/news/update/{{$news->id}}" enctype="multipart/form-data">
+        <form method="POST" action="/home/project/update/{{$news->id}}" enctype="multipart/form-data">
                 @csrf
             <div class="form-group">
                 <label for="connection">現有圖片</label>

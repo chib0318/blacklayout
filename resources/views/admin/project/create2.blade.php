@@ -9,27 +9,27 @@
 
     <div class="container">
 
-        <form method="POST" action="/home/project/store" enctype="multipart/form-data">
+        <form method="POST" action="/home/project/store2" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="connection">類別</label>
-                    <input type="text" class="form-control" id="connection"  name="connection" required>
+                    <label for="projects_id">類別</label>
+                    <input type="text" class="form-control" id="projects_id"  name="projects_id" required>
                 </div>
                 <div class="form-group">
-                    <label for="imgs">圖片</label>
-                    <input type="file" class="form-control" id="imgs"  name="imgs[]" required>
+                    <label for="img">圖片</label>
+                    <input type="file" class="form-control" id="img"  name="img[]" required>
                 </div>
                 <div class="form-group">
-                    <label for="queue">權重</label>
-                    <input type="text" class="form-control" id="queue"  name="queue"  required>
+                    <label for="sort">權重</label>
+                    <input type="number" class="form-control" id="sort"  name="sort"  required>
                 </div>
                 <div class="form-group">
-                    <label for="payload">標題</label>
-                    <textarea type="text" class="form-control" id="payload" name="payload" required></textarea>
+                    <label for="title">標題</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
                 </div>
                 <div class="form-group">
-                    <label for="payload">內容</label>
-                    <textarea type="text" class="form-control" id="payload" name="payload" required></textarea>
+                    <label for="content">內容</label>
+                    <input type="text" class="form-control" id="content" name="content" required>
                 </div>
 
 
@@ -41,9 +41,9 @@
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <script>
-    $(document).ready(function() {
-  $('#payload').summernote();
-});
+//     $(document).ready(function() {
+//   $('#payload').summernote();
+// });
 </script>
 @endsection
 

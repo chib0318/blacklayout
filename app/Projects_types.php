@@ -32,5 +32,5 @@ class Projects_types extends Model
      * @var array
      */
     protected $fillable = ['types', 'sort', 'created_at', 'updated_at'];
-
+    
 }

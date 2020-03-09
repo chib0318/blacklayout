@@ -55,11 +55,11 @@ Route::get('/admin/project/index2','ProjectController@index2');
 
 Route::get('/home/project/create2','ProjectController@create2');
 
-Route::post('/home/project/store2','ProjectController@store');
-Route::get('/admin/project/edit2/{id}', 'ProjectController@edit');
+Route::post('/home/project/store2','ProjectController@store2');
+Route::get('/admin/project/edit2/{id}', 'ProjectController@edit2');
 
-Route::post('/home/project/update2/{id}','ProjectController@update');
-Route::post('/home/project/delete2/{id}','ProjectController@delete');
+Route::post('/home/project/update2/{id}','ProjectController@update2');
+Route::post('/home/project/delete2/{id}','ProjectController@delete2');
 
 
 

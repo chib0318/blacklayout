@@ -42,7 +42,6 @@ class NewsController extends Controller
 
                 //上傳圖片
                 $path = $this->fileUpload($file,'product');
-
                 //建立News多張圖片的資料
                 $news_imgs = new News_img;
                 $news_imgs->news_id = $new_news->id;

@@ -38,46 +38,47 @@ class ProjectController extends Controller
          return redirect('admin/project/index');
      }
 
+     public function store2(Request $request){
+        //上傳檔案
+     $project_data = $request->all();
+
+     if($request->hasFile('img')) {
+
+         $file = $request->file('img');
+         $path = $this->fileUpload($file,'products');
+
+         $project_data['img'] = $path;
+     }
+        Projects::create($project_data)->save();
+         return redirect('/admin/project/index2');
+     }
+
+     public function edit($id){
+        $projects =Projects_types::find($id);
+        return view('admin/project/edit',compact('projects'));
+    }
+
      public function update(Request $request,$id){
         $project_data = $request->all();
         $item = Projects_types::find($id);
 
-        //if有上傳新圖片
-        if($request->hasFile('connection')) {
-            //舊圖片刪除
-            $old_image = $item->connection;
-            File::delete(public_path().$old_image);
-            //上傳新圖片
-            $file = $request->file('connection');
-            $path = $this->fileUpload($file,'product');
-            $news_data['connection'] = $path;
-
-        }
-
-        //多張圖片
-           if($request->hasFile('imgs')){
-               $files = $request->file('imgs');
-               foreach ($files as $file) {
-
-                   //上傳圖片
-                   $path = $this->fileUpload($file,'product');
-
-                   //建立News多張圖片的資料
-                   $news_imgs = new News_img;
-                   $news_imgs->news_id = $item['id'];
-                   $news_imgs->img = $path;
-                   $news_imgs->save();
-               }
-           }
-
-       
-
-            $item->update($news_data);
-        return redirect('/admin/news/index');
+            $item->update($project_data);
+        return redirect('/admin/project/index');
         // News::find($id)->update($request->all());
         //  return redirect('/admin/news/index');
      }
-    private function fileUpload($file,$dir){
+
+     public function delete($id){
+
+        $item = Projects_types::find($id);
+        $item->delete();
+
+
+        return redirect('/admin/project/index');
+
+     }
+
+     private function fileUpload($file,$dir){
         //防呆：資料夾不存在時將會自動建立資料夾，避免錯誤
         if( ! is_dir('upload/')){
             mkdir('upload/');
