@@ -51,17 +51,19 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                               圖片 <span class="caret"></span>
+                               產品管理 <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="">編輯
+                                <a class="dropdown-item" href="/admin/project/index">類別管理
                                 </a>
-
+                                <a class="dropdown-item" href="/admin/project/index2">產品管理
+                                </a>
                                 <form id="logout-form" action="" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
+
                         </li>
                     </ul>
 
