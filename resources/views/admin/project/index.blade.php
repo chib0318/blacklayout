@@ -34,11 +34,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($all_news as $item)
+            @foreach ($all_project as $item)
 
             <tr>
-                <td><img src="{{asset($item->connection)}}" alt="" width="120"></td>
-                <td>{{$item->queue}}</td>
+                <td>{{$item->types}}</td>
+                <td>{{$item->sort}}</td>
                 <td><a href="/admin/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
                     <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
                     <form id="delete-form-{{$item->id}}" action="/home/news/delete/{{$item->id}}" method="POST"
@@ -71,7 +71,7 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable( {
-    "order": [[ 0, 'desc' ]]
+    "order": [[ 1, 'desc' ]]
 } );
 } );
 
