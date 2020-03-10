@@ -33,7 +33,7 @@ class Projects extends Model
     protected $fillable = ['projects_id', 'img', 'sort', 'title', 'content', 'created_at', 'updated_at'];
     public function projects_types()
     {
-        return $this->belongsTo('App\Projects_types','projects_id');
+        return $this->belongsTo('App\Projects_types','projects_id','id');
     }
 
 }

@@ -57,7 +57,10 @@ class ProjectController extends Controller
         $projects =Projects_types::find($id);
         return view('admin/project/edit',compact('projects'));
     }
-
+    public function edit2($id){
+        $projects =Projects::find($id);
+        return view('admin/project/edit2',compact('projects'));
+    }
      public function update(Request $request,$id){
         $project_data = $request->all();
         $item = Projects_types::find($id);
@@ -66,6 +69,27 @@ class ProjectController extends Controller
         return redirect('/admin/project/index');
         // News::find($id)->update($request->all());
         //  return redirect('/admin/news/index');
+     }
+     public function update2(Request $request,$id){
+        $news_data = $request->all();
+        $item = Projects::find($id);
+
+        //if有上傳新圖片
+        if($request->hasFile('img')) {
+            //舊圖片刪除
+            $old_image = $item->img;
+            File::delete(public_path().$old_image);
+            //上傳新圖片
+            $file = $request->file('img');
+            $path = $this->fileUpload($file,'products');
+            $news_data['img'] = $path;
+
+        }
+
+
+
+            $item->update($news_data);
+        return redirect('/admin/project/index2');
      }
 
      public function delete($id){

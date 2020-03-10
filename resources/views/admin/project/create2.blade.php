@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label for="img">圖片</label>
-                    <input type="file" class="form-control" id="img"  name="img[]" required>
+                    <input type="file" class="form-control" id="img"  name="img" required>
                 </div>
                 <div class="form-group">
                     <label for="sort">權重</label>

@@ -19,6 +19,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @yield('css')
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 
 </head>
 <body>

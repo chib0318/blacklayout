@@ -36,20 +36,23 @@
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($all_news as $item)
+            @foreach ($all_type as $item)
 
             <tr>
-                <td><img src="{{asset($item->connection)}}" alt="" width="120"></td>
-                <td>{{$item->queue}}</td>
-                <td><a href="/admin/news/edit/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
+                <td>{{$item->projects_id}}</td>
+                <td><img src="{{asset($item->img)}}" alt="" width="120"></td>
+                <td>{{$item->sort}}</td>
+                <td>{{$item->title}}</td>
+                <td>{{$item->content}}</td>
+                <td><a href="/admin/project/edit2/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
                     <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
-                    <form id="delete-form-{{$item->id}}" action="/home/news/delete/{{$item->id}}" method="POST"
+                    <form id="delete-form-{{$item->id}}" action="/home/project/delete2/{{$item->id}}" method="POST"
                         style="display: none;">
                         @csrf
                     </form>
                 </td>
             </tr>
-            @endforeach --}}
+            @endforeach
         </tbody>
     </table>
 </div>
