@@ -14,8 +14,9 @@ class ProjectController extends Controller
 
     }
     public function index2(){
-        $all_type = Projects::all();
-        return view('admin/project/index2',compact('all_type'));
+        $products = Projects::all();
+        $types =  Projects_types::all();
+        return view('admin/project/index2',compact('products','types'));
     }
 
     public function create(){
@@ -60,8 +61,8 @@ class ProjectController extends Controller
         return view('admin/project/edit',compact('projects'));
     }
     public function edit2($id){
-        $projectstype =Projects_types::all();
-        $projects =Projects::find($id);
+       $all_type = Projects::find($id);
+        $types =  Projects_types::all();
         return view('admin/project/edit2',compact('projectstype','projects'));
     }
      public function update(Request $request,$id){

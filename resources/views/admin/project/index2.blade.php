@@ -36,10 +36,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($all_type as $item)
+            @foreach ($products as $item)
 
             <tr>
-                <td>{{$item->projects_id}}</td>
+                <td>{{$item->types_id}}</td>
                 <td><img src="{{asset($item->img)}}" alt="" width="120"></td>
                 <td>{{$item->sort}}</td>
                 <td>{{$item->title}}</td>
