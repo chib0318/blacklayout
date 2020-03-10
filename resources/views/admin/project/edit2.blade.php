@@ -30,7 +30,7 @@
             <img class="img-fluid" width="250" src="{{$projects->img}}">
             </div>
             <input type="file" class="form-control" id="img"  name="img" value="{{$projects->img}}" >
-
+            
             <div class="form-group">
                 <label for="sort">title</label>
                 <input type="text" class="form-control" id="queue"  name="sort" value="{{$projects->sort}}" >

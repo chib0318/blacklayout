@@ -22,7 +22,8 @@ class ProjectController extends Controller
         return view('admin/project/create');
     }
     public function create2(){
-        return view('admin/project/create2');
+        $prodtypes = Projects_types::all();
+        return view('admin/project/create2',compact('prodtypes'));
     }
 
     public function store(Request $request){
@@ -54,12 +55,14 @@ class ProjectController extends Controller
      }
 
      public function edit($id){
+
         $projects =Projects_types::find($id);
         return view('admin/project/edit',compact('projects'));
     }
     public function edit2($id){
+        $projectstype =Projects_types::all();
         $projects =Projects::find($id);
-        return view('admin/project/edit2',compact('projects'));
+        return view('admin/project/edit2',compact('projectstype','projects'));
     }
      public function update(Request $request,$id){
         $project_data = $request->all();
