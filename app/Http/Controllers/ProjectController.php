@@ -73,9 +73,9 @@ class ProjectController extends Controller
      public function update2(Request $request,$id){
         $news_data = $request->all();
         $item = Projects::find($id);
-
         //if有上傳新圖片
         if($request->hasFile('img')) {
+
             //舊圖片刪除
             $old_image = $item->img;
             File::delete(public_path().$old_image);
@@ -85,8 +85,6 @@ class ProjectController extends Controller
             $news_data['img'] = $path;
 
         }
-
-
 
             $item->update($news_data);
         return redirect('/admin/project/index2');
@@ -99,6 +97,22 @@ class ProjectController extends Controller
 
 
         return redirect('/admin/project/index');
+
+     }
+     public function delete2($id){
+
+        $item = Projects::find($id);
+
+        // dd($item);
+        $old_image = $item->img;
+        // dd($old_image);
+        if(file_exists(public_path().$old_image)){
+            File::delete(public_path().$old_image);
+        }
+
+        $item->delete();
+
+        return redirect('/admin/project/index2');
 
      }
 

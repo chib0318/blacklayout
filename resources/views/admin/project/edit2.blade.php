@@ -25,11 +25,11 @@
         <form method="POST" action="/home/project/update2/{{$projects->id}}" enctype="multipart/form-data">
                 @csrf
             <div class="form-group">
-                <label for="connection">現有圖片</label>
+                <label for="img">現有圖片</label>
                 <hr>
             <img class="img-fluid" width="250" src="{{$projects->img}}">
             </div>
-            <input type="file" class="form-control" id="connection"  name="connection" value="{{$projects->img}}" >
+            <input type="file" class="form-control" id="img"  name="img" value="{{$projects->img}}" >
 
             <div class="form-group">
                 <label for="sort">title</label>
