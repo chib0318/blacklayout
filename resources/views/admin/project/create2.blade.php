@@ -13,17 +13,15 @@
                 @csrf
 
                 <div class="form-group">
-                    <label for="projects_id">類別</label>
-                    <select class="form-control" id="projects_id" name="projects_id">
+                    <label for="types_id">類別</label>
+                    <select class="form-control" id="types_id" name="types_id">
                     @foreach ($prodtypes as $item)
-                        @if ($item->id == $products->types_id)
 
-                    <option value="{{$item->id}}" selected>
+
+                    <option value="{{$item->id}}" >
                         {{$item->types}}
                     </option>
-                    @else
-                        <option value="{{$item->id}}"> {{$item->types}}</option>
-                        @endif
+
 
                     @endforeach
                     </select>

@@ -39,7 +39,7 @@
             @foreach ($products as $item)
 
             <tr>
-                <td>{{$item->types_id}}</td>
+                <td>{{$item->projects_types->types}}</td>
                 <td><img src="{{asset($item->img)}}" alt="" width="120"></td>
                 <td>{{$item->sort}}</td>
                 <td>{{$item->title}}</td>

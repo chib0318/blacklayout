@@ -22,26 +22,43 @@
 
     <div class="container">
 
-        <form method="POST" action="/home/project/update2/{{$projects->id}}" enctype="multipart/form-data">
+        <form method="POST" action="/home/project/update2/{{$all_type->id}}" enctype="multipart/form-data">
                 @csrf
+                <div class="form-group">
+                    <label for="types_id">類別</label>
+                    <select class="form-control" id="types_id" name="types_id">
+                    @foreach ($types as $item)
+
+                        @if ($item->id == $all_type->types_id)
+
+                    <option value="{{$item->id}}" selected>
+                        {{$item->types}}
+                    </option>
+                    @else
+                        <option value="{{$item->id}}"> {{$item->types}}</option>
+                        @endif
+
+                    @endforeach
+                    </select>
+                  </div>
             <div class="form-group">
                 <label for="img">現有圖片</label>
                 <hr>
-            <img class="img-fluid" width="250" src="{{$projects->img}}">
+            <img class="img-fluid" width="250" src="{{$all_type->img}}">
             </div>
-            <input type="file" class="form-control" id="img"  name="img" value="{{$projects->img}}" >
-            
+            <input type="file" class="form-control" id="img"  name="img" value="{{$all_type->img}}" >
+
             <div class="form-group">
                 <label for="sort">title</label>
-                <input type="text" class="form-control" id="queue"  name="sort" value="{{$projects->sort}}" >
+                <input type="text" class="form-control" id="sort"  name="sort" value="{{$all_type->sort}}" >
             </div>
             <div class="form-group">
                 <label for="title">main</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{$projects->title}}">
+                <input type="text" class="form-control" id="title" name="title" value="{{$all_type->title}}">
             </div>
             <div class="form-group">
                 <label for="content">sort</label>
-                <input type="number" min="0" class="form-control" id="content" name="content" value="{{$projects->content}}">
+                <input type="number" min="0" class="form-control" id="content" name="content" value="{{$all_type->content}}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

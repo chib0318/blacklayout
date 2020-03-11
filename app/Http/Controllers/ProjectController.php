@@ -61,9 +61,13 @@ class ProjectController extends Controller
         return view('admin/project/edit',compact('projects'));
     }
     public function edit2($id){
+
        $all_type = Projects::find($id);
+        // dd( $all_type);
         $types =  Projects_types::all();
-        return view('admin/project/edit2',compact('projectstype','projects'));
+
+        return view('admin/project/edit2',compact('all_type','types'));
+
     }
      public function update(Request $request,$id){
         $project_data = $request->all();
