@@ -38,4 +38,8 @@ class FrontController extends Controller
 
         return view('front/project');
     }
+    public function cast(){
+
+        return view('front/cast');
+    }
 }
