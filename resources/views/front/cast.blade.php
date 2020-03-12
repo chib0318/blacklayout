@@ -146,7 +146,8 @@
     // $('.product .color').click(function(){
     //     $('.product .color').removeClass("active");
     //     $(this).addClass("active");
-
+    // var color = $(this).attr("data-color");
+    //     $('#color').val(color);
     // });
     $('.product-card .color').click(function(){
         $('.product-card .color').removeClass("active");
