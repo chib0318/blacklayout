@@ -130,8 +130,8 @@
                                 NT$7,599
                             </div>
                         </div>
-                        <input type="text" name="capacity" id="capacity">
-                        <input type="text" name="color" id="color"><br>
+                        <input type="text" name="capacity" id="capacity" hidden>
+                        <input type="text" name="color" id="color" hidden><br>
                         <button>立即購買</button>
                     </form>
                 </div>

@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->integer('sort')->default(0);
             $table->string('title');
             $table->string('content');
+            $table->integer('price');
             $table->timestamps();
         });
     }
