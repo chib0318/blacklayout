@@ -23,6 +23,9 @@ Route::get('/add_cart/{product_id}','FrontController@add_cart' );
 
 Route::get('/cart','FrontController@cart_total' );//cart結帳
 
+Route::get('/contact','FrontController@contact' );
+Route::post('/contact/store','FrontController@contactstore' );
+
 
 Route::get('/product_types','FrontController@product_types' );//產品多樣頁面
 Auth::routes();

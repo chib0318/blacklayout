@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\News;
+use App\Contact;
 use App\Projects;
+use App\Mail\OrderShipped;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -79,5 +82,17 @@ class FrontController extends Controller
         return view('front/cart',compact('items'));
 
 
+    }
+    public function contact(){
+
+        return view('front/contact');
+    }
+    public function contactstore(Request $request){
+        $contact = $request->all();
+        $order = Contact::create($contact);
+
+        Mail::to('vipbf0084@gmail.com')->send(new OrderShipped($order));
+
+        return redirect('/contact');
     }
 }
