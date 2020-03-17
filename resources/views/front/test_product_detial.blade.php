@@ -78,7 +78,7 @@
 
                     <div class="product-title">
 
-                        <span class="a">Redmi Note 8 Pro</span>
+                        <span class="a">45556</span>
                         <div class="product-title-2">
                             <span>6GB+64GB, 冰翡翠</span><br>
                             <span>NT$6,599</span><hr>

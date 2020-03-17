@@ -17,12 +17,12 @@ Route::get('/news','FrontController@news' );//list page
 Route::get('/news/{id}','FrontController@news_detail' );//content page
 Route::get('/product','FrontController@product' );
 Route::get('/project','FrontController@project' );//產品頁面
-Route::get('/test_product_detial','FrontController@test_product_detial' );
+
 
 Route::get('/add_cart/{product_id}','FrontController@add_cart' );
 
 Route::get('/cart','FrontController@cart_total' );//cart結帳
-
+Route::get('/test_product_detial','FrontController@test_product_detial' );
 Route::get('/contact','FrontController@contact' );
 Route::post('/contact/store','FrontController@contactstore' );
 

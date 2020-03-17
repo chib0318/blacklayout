@@ -67,6 +67,12 @@
                         啟B第一春
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="/test_product_detial">
+                        <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+                        商品
+                    </a>
+                </li>
             </ul>
             <div class="navbar-buttons mbr-section-btn">
                 <a class="btn btn-sm btn-primary display-4" href="/project">

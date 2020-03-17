@@ -55,15 +55,15 @@ class FrontController extends Controller
     {
 
         $Product = Projects::find($product_id); // assuming you have a Product model with id, name, description & price
-        $rowId = 456; // generate a unique() row ID
+        $rowId = $product_id; // generate a unique() row ID
         $userID = Auth::user()->id;
          // the user ID to bind the cart contents
-
+        dd($Product);
         \Cart::session($userID)->add(array(
             'id' => $rowId,
             'name' => $Product->title,
             'price' => $Product->price,
-            'quantity' => 4,
+            'quantity' => 1,
             'attributes' => array(),
             'associatedModel' => $Product
 
