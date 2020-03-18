@@ -78,7 +78,7 @@
 
                     <div class="product-title">
 
-                        <span class="a">45556</span>
+                        <span class="a">{{$Product->title}}</span>
                         <div class="product-title-2">
                             <span>6GB+64GB, 冰翡翠</span><br>
                             <span>NT$6,599</span><hr>
@@ -112,13 +112,13 @@
                             </div>
                         </div>
                     </div>
-                    <form action="" method="post">
+                    <form action="/add_cart/{{$Product->id}}" method="post">
                         @csrf
                         <div class="product-qty">
                             數量
                             <div id="field1">
                                 <button type="button" id="sub" class="sub">-</button>
-                                <input type="number" id="1" value="1" min="1" max="3" />
+                                <input type="number" id="1" value="1" min="1" max="99" />
                                 <button type="button" id="add" class="add">+</button>
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                                 <span>Redmi Note 8 Pro</span>
                                 <span>冰翡翠</span>
                                 <span>6GB+64GB</span> * <span>1</span>
-                                NT$7,599
+                                NT${{$Product->price}}
                             </div>
                         </div>
                         <input type="text" name="capacity" id="capacity" hidden>

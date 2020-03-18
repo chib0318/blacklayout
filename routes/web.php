@@ -19,10 +19,15 @@ Route::get('/product','FrontController@product' );
 Route::get('/project','FrontController@project' );//產品頁面
 
 
-Route::get('/add_cart/{product_id}','FrontController@add_cart' );
+Route::post('/add_cart/{product_id}','FrontController@add_cart' );
 
 Route::get('/cart','FrontController@cart_total' );//cart結帳
-Route::get('/test_product_detial','FrontController@test_product_detial' );
+Route::get('/test_product_detial/{product_id}','FrontController@test_product_detial' );
+Route::post('/update_cart/{product_id}','FrontController@update_cart');//更新購物車數量
+Route::post('/delete_cart/{product_id}','FrontController@delete_cart');//刪除購物車
+
+
+
 Route::get('/contact','FrontController@contact' );
 Route::post('/contact/store','FrontController@contactstore' );
 
