@@ -32,6 +32,7 @@
                 <th>權重</th>
                 <th>標題</th>
                 <th>內容</th>
+                <th>價錢</th>
                 <th width="100px"></th>
             </tr>
         </thead>
@@ -44,6 +45,7 @@
                 <td>{{$item->sort}}</td>
                 <td>{{$item->title}}</td>
                 <td>{{$item->content}}</td>
+                <td>{{$item->price}}</td>
                 <td><a href="/admin/project/edit2/{{$item->id}}" class="btn btn-success btn-sm">修改</a>
                     <button class="btn btn-danger btn-sm" onclick="show_confirm({{$item->id}})">刪除</button>
                     <form id="delete-form-{{$item->id}}" action="/home/project/delete2/{{$item->id}}" method="POST"

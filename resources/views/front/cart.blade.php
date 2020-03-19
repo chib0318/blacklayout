@@ -137,13 +137,13 @@
                 <div class="Cart__productGrid Cart__productTitle">
                     {{$item->name}}
                 </div>
-                <div class="Cart__productGrid Cart__productPrice">${{$item->price}}</div>
+                <div class="Cart__productGrid Cart__productPrice price" data-itemid="{{$item->id}}">${{$item->price}}</div>
                 <div class="Cart__productGrid Cart__productQuantity">
                     <button class="btn btn-sm btn-info btn-minus" data-itemid="{{$item->id}}">-</button>
                     <span class="qty" data-itemid="{{$item->id}}">{{$item->quantity}}</span>
                     <button class="btn btn-sm btn-info btn-plus" data-itemid="{{$item->id}}">+</button>
                 </div>
-                <div class="Cart__productGrid Cart__productTotal">${{$item->price * $item->quantity}}</div>
+                <div class="Cart__productGrid Cart__productTotal total" data-itemid="{{$item->id}}">${{$item->price * $item->quantity}}</div>
                 <div class="Cart__productGrid Cart__productDel">
                     <button class="btn btn-sm btn-info btn-delete" data-itemid="{{$item->id}}">&times;</button>
                 </div>
@@ -157,23 +157,29 @@
 @endsection
 @section('js')
 <script>
-    $.ajaxSetup({
+     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-
-    $('.btn-minus').click(function () {
-        var itemid = this.getAttribute('data-itemid');//抓指定產品id
+     $('.btn-minus').click(function () {
+        var itemid = this.getAttribute('data-itemid');
 
         $.ajax({
             method: 'POST',
             url: '/update_cart/'+itemid,
             data: {
-                quantity:-1,
+                quantity:-1
             },
             success: function (res) {
-               console.log(res)
+            //  window.location.reload();
+                var old_value = $(`.qty[data-itemid="${itemid}"`).text();
+                var new_value = parseInt(old_value) -1;
+                $(`.qty[data-itemid="${itemid}"`).text(new_value);
+                var price = $(`.price[data-itemid="${itemid}"`).text();
+                var old_total = $(`.total[data-itemid="${itemid}"`).text();
+                var new_total = Math.max(parseInt(old_total) - parseInt(price),0);
+                $(`.total[data-itemid="${itemid}"`).text(new_total);
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -184,17 +190,22 @@
     });
 
     $('.btn-plus').click(function () {
-        var itemid = this.getAttribute('data-itemid');//抓指定產品id
+        var itemid = this.getAttribute('data-itemid');
 
         $.ajax({
             method: 'POST',
             url: '/update_cart/'+itemid,
             data: {
-                quantity:1,
+                quantity:1
             },
             success: function (res) {
-            console.log(res)
-
+                var old_value = $(`.qty[data-itemid="${itemid}"]`).text();
+                var new_value = parseInt(old_value) + 1;
+                $(`.qty[data-itemid="${itemid}"]`).text(new_value);
+                var price = $(`.price[data-itemid="${itemid}"]`).text();
+                var old_total = $(`.total[data-itemid="${itemid}"]`).text();
+                var new_total = Math.max(parseInt(old_total) + parseInt(price),0);
+                $(`.total[data-itemid="${itemid}"]`).text(new_total);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.error(textStatus + " " + errorThrown);
@@ -220,5 +231,6 @@
             });
         }
     });
+
 </script>
 @endsection

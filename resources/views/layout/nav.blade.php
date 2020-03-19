@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link text-white display-4" href="/test_product_detial">
+                    <a class="nav-link link text-white display-4" href="/project">
                         <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
                         商品
                     </a>

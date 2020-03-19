@@ -37,14 +37,12 @@ class FrontController extends Controller
 
     }
 
-    public function product(){
+    public function project() {
+        $products = Projects::all();
 
-        return view('front/product');
+        return view('front/project',compact('products'));
     }
-    public function project(){
 
-        return view('front/project');
-    }
     public function test_product_detial($product_id){
         $Product = Projects::find($product_id);
         return view('front/test_product_detial',compact('Product'));
@@ -56,9 +54,9 @@ class FrontController extends Controller
 
         $Product = Projects::find($product_id); // assuming you have a Product model with id, name, description & price
         $rowId = $product_id; // generate a unique() row ID
-        $userID = Auth::user()->id;
+
          // the user ID to bind the cart contents
-        \Cart::session($userID)->add(array(
+        \Cart::add(array(
             'id' => $rowId,
             'name' => $Product->title,
             'price' => $Product->price,
@@ -76,26 +74,27 @@ class FrontController extends Controller
     public function update_cart(Request $request,$product_id)
     {
         $quantity = $request->quantity;
-        $userID = Auth::user()->id;
-        \Cart::session($userID)->update($product_id, array(
+
+        \Cart::update($product_id, array(
             'quantity' => $quantity, // so if the current product has a quantity of 4, it will subtract 1 and will result to 3
           ));
 
 
         return 'sucesss';
     }
-    // public function delete_cart(Request $request,$product_id)
-    // {
-    //     \Cart::remove($product_id);
+    public function delete_cart(Request $request,$product_id)
+    {
 
-    //     return 'success';
-    // }
+        \Cart::remove($product_id);
+
+        return 'success';
+    }
 
     public function cart_total()
 
     {
-        $userID = Auth::user()->id;
-        $items = \Cart::session($userID)->getContent();
+
+        $items = \Cart::getContent();
         return view('front/cart',compact('items'));
 
 

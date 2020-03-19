@@ -46,6 +46,10 @@
                     <label for="content">內容</label>
                     <input type="text" class="form-control" id="content" name="content" required>
                 </div>
+                <div class="form-group">
+                    <label for="price">價錢</label>
+                    <input type="number" min="0" class="form-control" id="price" name="price" required>
+                </div>
 
 
             <button type="submit" class="btn btn-primary">Submit</button>

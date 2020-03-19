@@ -60,6 +60,10 @@
                 <label for="content">sort</label>
                 <input type="number" min="0" class="form-control" id="content" name="content" value="{{$all_type->content}}">
             </div>
+            <div class="form-group">
+                <label for="price">價錢</label>
+                <input type="number" min="0" class="form-control" id="price" name="price" value="{{$all_type->price}}">
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
